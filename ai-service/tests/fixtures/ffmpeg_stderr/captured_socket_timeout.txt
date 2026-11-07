@@ -1,0 +1,5 @@
+[tcp @ 0x5640086bf540] Starting connection attempt to 127.0.0.1 port 38091
+[tcp @ 0x5640086bf540] Successfully connected to 127.0.0.1 port 38091
+[in#0 @ 0x5640086fe040] Error opening input: Invalid data found when processing input
+Error opening input file rtsp://127.0.0.1:38091/x.
+Error opening input files: Invalid data found when processing input

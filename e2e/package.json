@@ -1,0 +1,20 @@
+{
+  "name": "congruence-eye-e2e",
+  "version": "1.0.0",
+  "description": "Playwright end-to-end tests for Congruence Eye (backend + frontend + ai-service)",
+  "scripts": {
+    "e2e": "playwright test",
+    "e2e:headed": "playwright test --headed --workers=1",
+    "report": "playwright show-report playwright-report",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "1.56.1",
+    "@types/http-proxy": "^1.17.17",
+    "@types/node": "^22.20.5",
+    "http-proxy": "^1.18.1",
+    "typescript": "5.8"
+  },
+  "private": true
+}

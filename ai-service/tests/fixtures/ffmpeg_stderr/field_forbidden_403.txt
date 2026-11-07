@@ -1,0 +1,3 @@
+[rtsp @ 0x55c1c86ea140] method DESCRIBE failed: 403 Forbidden
+[in#0 @ 0x55c1c86ea040] Error opening input: Server returned 403 Forbidden (access denied)
+Error opening input files: Server returned 403 Forbidden (access denied)

@@ -1,0 +1,4 @@
+[tcp @ 0x55b0e1a8e540] Failed to resolve hostname dvr-tnagar.local: Name or service not known
+[in#0 @ 0x55b0e1acd040] Error opening input: Input/output error
+Error opening input file rtsp://admin:secret@dvr-tnagar.local:554/cam/realmonitor?channel=1&subtype=0.
+Error opening input files: Input/output error

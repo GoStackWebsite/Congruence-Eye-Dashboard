@@ -1,0 +1,23 @@
+node_modules/
+dist/
+.angular/
+.venv/
+__pycache__/
+*.pyc
+.env
+backend/data/
+backend/uploads/
+ai-service/spool/
+ai-service/models/*.pt
+ai-service/models/*.caffemodel
+e2e/test-results/
+e2e/playwright-report/
+test-logs/
+e2e/.tmp/
+ai-service/models/*.pb
+.claude/
+ai-service.env
+setup-log.txt
+
+# build and run logs
+*.log

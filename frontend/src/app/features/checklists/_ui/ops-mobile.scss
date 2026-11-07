@@ -1,0 +1,40 @@
+.ops-page .ce-dtable .cell-avatar {
+  max-width: 220px;
+  .ops-cell-title {
+    min-width: 0;
+  }
+}
+@media (max-width: 767.98px) {
+  /* stacked-card tables are built into ce-table (styles/_ds.scss, .ce-table-wrap.m-cards); ops action rows: */
+  .ce-table-wrap.m-cards td.t-actions .ops-row-actions {
+    width: 100%;
+    justify-content: flex-end;
+    gap: 6px;
+  }
+  .ops-toolbar {
+    .ce-search {
+      flex: 1 1 100%;
+      min-width: 0;
+    }
+    .ops-filter.mat-mdc-form-field,
+    .ops-filter.mat-mdc-form-field.wide {
+      flex: 1 1 140px;
+      width: auto;
+    }
+  }
+  .ops-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .ops-page .ce-page-actions {
+    flex-wrap: wrap;
+  }
+  .ops-hide-xs {
+    display: none !important;
+  }
+}
+@media (min-width: 768px) {
+  .ops-only-xs {
+    display: none !important;
+  }
+}
+

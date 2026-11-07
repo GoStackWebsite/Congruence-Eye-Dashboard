@@ -1,0 +1,14 @@
+[tcp @ 0x55f70f7cc540] Starting connection attempt to 127.0.0.1 port 34313
+[tcp @ 0x55f70f7cc540] Successfully connected to 127.0.0.1 port 34313
+[rtsp @ 0x55f70f80b140] SDP:
+v=0
+o=- 680197121 1 IN IP4 127.0.0.1
+s=Congruence Eye test DVR
+t=0 0
+a=control:*
+m=video 0 RTP/AVP 96
+c=IN IP4 0.0.0.0
+a=rtpmap:96 X-UNKNOWN/90000
+a=control:trackID=1
+
+[rtsp @ 0x55f70f80b140] setting jitter buffer size to 0

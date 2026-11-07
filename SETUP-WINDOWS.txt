@@ -1,0 +1,46 @@
+CONGRUENCE EYE - SIMPLE SETUP ON A WINDOWS LAPTOP / PC
+=======================================================
+
+BEFORE YOU START
+ - Docker Desktop must be installed. Open it once and wait until it says "Engine running".
+ - Internet is needed the first time (it downloads about 5-8 GB).
+ - Keep the laptop plugged in. The first setup takes 15-25 minutes.
+
+PART 1 - SET UP THE APP (can be done anywhere, e.g. at the office)
+ 1. Unzip this folder to a simple place, e.g.  C:\CongruenceEye
+    (avoid OneDrive / Desktop folders that sync).
+ 2. Double-click  START-HERE.bat
+ 3. Answer the questions:
+      - staff uniform colour (type the number)
+      - store name, short code, city, opening and closing time (Enter = default)
+ 4. When it says DONE, the app opens at  http://localhost:8080
+    Login: admin@congruence.in  /  Password@123
+    --> Change this password straight away (top-right menu > Change password).
+
+ You can run START-HERE.bat again any time (e.g. to change the uniform colour).
+ It keeps your passwords, store and key - nothing is created twice.
+
+PART 2 - CONNECT THE CAMERAS (must be done AT THE SHOP, on the same Wi-Fi / LAN as the DVR)
+ 1. Ask your CCTV installer for: the DVR's IP address, admin username and password.
+ 2. Double-click  CHECK-DVR.bat  and type the DVR IP.
+      - "GOOD" = ready. It also tells you the likely brand (Hikvision / CP Plus / Dahua).
+      - "RTSP closed" = turn on RTSP (port 554) in the DVR menu > Network.
+ 3. Start Docker Desktop, then open  http://localhost:8080
+ 4. Admin > Stores > your store > Recorders > Add recorder
+      brand, DVR IP, username, password, number of channels > Save
+ 5. Select the channels > Test selected  (you see a live picture from each camera)
+ 6. Add the channels as cameras. Use only the important cameras (entrance, main floor,
+    billing counter) - an i5 laptop handles about 3-4 cameras.
+ 7. On each camera picture draw:
+      - ENTRANCE camera: a line across the door (this counts people in / out)
+      - billing counter area (QUEUE), store sections, staff-only area (behind the counter)
+ Customer counts start within a few minutes.
+
+IMPORTANT
+ - Do NOT run "seed:prod" on this laptop. It adds fake demo stores and fake numbers.
+ - Keep the file ".env" safe - it holds the passwords. Don't email or share it.
+ - The laptop must stay ON and connected at the shop for counting to continue.
+
+IF SOMETHING GOES WRONG
+ - Read the red "STOPPED:" message - it says what to fix - then run START-HERE.bat again.
+ - Everything that happened is saved in  setup-log.txt  (send it to your IT person / Claude).

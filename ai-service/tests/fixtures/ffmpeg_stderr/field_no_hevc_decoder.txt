@@ -1,0 +1,7 @@
+Input #0, rtsp, from 'rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/Streaming/Channels/301':
+  Metadata:
+    title           : Media Presentation
+  Duration: N/A, start: 0.080000, bitrate: N/A
+  Stream #0:0: Video: hevc, none, 2560x1440, 20 tbr, 90k tbn
+[vist#0:0/hevc @ 0x55d0e2c8c9c0] Decoder (codec hevc) not found for input stream #0:0
+Error opening output files: Decoder not found

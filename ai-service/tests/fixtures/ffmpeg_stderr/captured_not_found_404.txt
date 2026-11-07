@@ -1,0 +1,6 @@
+[tcp @ 0x56209e940540] Starting connection attempt to 127.0.0.1 port 34313
+[tcp @ 0x56209e940540] Successfully connected to 127.0.0.1 port 34313
+[rtsp @ 0x56209e97f140] method DESCRIBE failed: 404 Not Found
+[in#0 @ 0x56209e97f040] Error opening input: Server returned 404 Not Found
+Error opening input file rtsp://admin:secret@127.0.0.1:34313/zz.
+Error opening input files: Server returned 404 Not Found

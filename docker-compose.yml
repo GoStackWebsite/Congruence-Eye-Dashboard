@@ -1,0 +1,99 @@
+# Congruence Eye — full stack on SQL Server 2022
+#   cp .env.example .env   (set SA_PASSWORD, JWT_SECRET)
+#   docker compose up -d --build
+#   docker compose run --rm backend npm run seed:prod     # optional demo data
+#   open http://localhost:8080   (admin@congruence.in / Password@123)
+name: congruence-eye
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: ${SA_PASSWORD:?set SA_PASSWORD in .env}
+      MSSQL_PID: ${MSSQL_PID:-Developer}
+      TZ: Asia/Kolkata
+    ports: ["1433:1433"]
+    volumes: [mssql-data:/var/opt/mssql]
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P \"$$MSSQL_SA_PASSWORD\" -Q 'SELECT 1' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
+
+  # Creates the database, tables and reporting views (idempotent)
+  db-init:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    depends_on:
+      sqlserver: { condition: service_healthy }
+    environment:
+      SA_PASSWORD: ${SA_PASSWORD}
+    volumes: [./database:/scripts:ro]
+    entrypoint: ["/bin/bash", "-c"]
+    command:
+      - >
+        for f in /scripts/01_schema.sql /scripts/02_views.sql /scripts/03_seed_reference.sql; do
+          echo "running $$f";
+          /opt/mssql-tools18/bin/sqlcmd -C -b -S sqlserver -U sa -P "$$SA_PASSWORD" -i "$$f" || exit 1;
+        done
+    restart: "no"
+
+  backend:
+    build: ./backend
+    depends_on:
+      db-init: { condition: service_completed_successfully }
+    environment:
+      PORT: 3000
+      DB_TYPE: mssql
+      DB_HOST: sqlserver
+      DB_PORT: 1433
+      DB_USER: sa
+      DB_PASSWORD: ${SA_PASSWORD}
+      DB_NAME: CongruenceEye
+      DB_ENCRYPT: "false"
+      DB_TRUST_CERT: "true"
+      DB_SYNC: "false"
+      JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET in .env}
+      RECORDER_SECRET: ${RECORDER_SECRET:?set RECORDER_SECRET in .env}
+      AI_SERVICE_URL: http://ai-service:8000
+      UPLOAD_DIR: /app/uploads
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      SMTP_FROM: ${SMTP_FROM:-no-reply@congruence.in}
+      TZ: Asia/Kolkata
+    volumes: [uploads:/app/uploads]
+    ports: ["3000:3000"]
+    restart: unless-stopped
+
+  # One ai-service per store. In production run this on the store's edge box
+  # (same image) with that store's EDGE_API_KEY from Admin > Edge devices.
+  ai-service:
+    build: ./ai-service
+    depends_on: [backend]
+    # Shop-specific AI tunables (STAFF_UNIFORM_HSV, TARGET_FPS, ...) - optional file, see ai-service.env.example
+    env_file:
+      - path: ./ai-service.env
+        required: false
+    environment:
+      BACKEND_URL: http://backend:3000
+      EDGE_API_KEY: ${EDGE_API_KEY:-dev-edge-key-store-1}
+      DEVICE: ${AI_DEVICE:-cpu}
+      TZ: Asia/Kolkata
+    volumes: [ai-spool:/app/spool, ai-models:/app/models]
+    ports: ["8000:8000"]
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    depends_on: [backend]
+    ports: ["8080:80"]
+    restart: unless-stopped
+
+volumes:
+  mssql-data:
+  uploads:
+  ai-spool:
+  ai-models:

@@ -1,0 +1,5 @@
+[tcp @ 0x55e3d5f2d540] Starting connection attempt to 10.0.0.21 port 554
+[tcp @ 0x55e3d5f2d540] Connection attempt to 10.0.0.21 port 554 failed: Connection timed out
+[tcp @ 0x55e3d5f2d540] Connection to tcp://10.0.0.21:554?timeout=10000000 failed: Connection timed out
+[in#0 @ 0x55e3d5f6c040] Error opening input: Connection timed out
+Error opening input files: Connection timed out

@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+spool/
+spool-sim/
+models/*.pt
+models/*.caffemodel
+models/*.pb
+models/*.pbtxt
+models/*.prototxt
+.env
+*.egg-info/

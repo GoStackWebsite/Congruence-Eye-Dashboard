@@ -1,0 +1,11 @@
+/*
+ * Global styles — Design System v2 (docs/DESIGN_SYSTEM.md).
+ * tokens → Material restyling → base → shell → DS components → legacy page classes → screens.
+ */
+@use 'styles/tokens';
+@use 'styles/material';
+@use 'styles/base';
+@use 'styles/shell';
+@use 'styles/ds';
+@use 'styles/legacy';
+@use 'styles/screens';

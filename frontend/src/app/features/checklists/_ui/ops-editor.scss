@@ -1,0 +1,211 @@
+/* ---------------------------------------------------------------- editor pattern (builder, schedule) */
+.ops-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+.ops-ed-head {
+  position: sticky;
+  top: var(--topbar-h);
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: -20px -24px 0;
+  padding: 12px 24px;
+  background: var(--c-surface);
+  border-bottom: 1px solid var(--c-border);
+  .titles {
+    flex: 1;
+    min-width: 0;
+  }
+  .title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    h1 {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+  .desc {
+    margin: 0;
+    font-size: 12px;
+    color: var(--c-text-3);
+  }
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+.ops-ed-body {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  &.with-preview {
+    grid-template-columns: 240px minmax(0, 1fr) 360px;
+  }
+}
+.ops-outline {
+  position: sticky;
+  top: calc(var(--topbar-h) + 76px);
+  max-height: calc(100vh - var(--topbar-h) - 160px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 12px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-card);
+  .ol-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4px 8px;
+  }
+}
+.ops-ed-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+.ops-ed-foot {
+  position: sticky;
+  bottom: 0;
+  z-index: 14;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 -24px -40px;
+  padding: 12px 24px;
+  background: var(--c-surface);
+  border-top: 1px solid var(--c-border);
+  box-shadow: 0 -4px 12px rgba(16, 24, 40, 0.04);
+  .sum {
+    font-size: 13px;
+    color: var(--c-text-2);
+    b {
+      color: var(--c-text);
+      font-variant-numeric: tabular-nums;
+    }
+  }
+  .spacer {
+    flex: 1;
+  }
+}
+@media (max-width: 1599.98px) {
+  .ops-ed-body.with-preview {
+    grid-template-columns: minmax(0, 1fr) 360px;
+    > .ops-outline {
+      display: none;
+    }
+  }
+}
+@media (max-width: 1199.98px) {
+  .ops-ed-body.with-preview {
+    grid-template-columns: minmax(0, 1fr);
+    .qb-preview {
+      position: static;
+      order: -1;
+    }
+  }
+}
+@media (max-width: 1023.98px) {
+  .ops-ed-head {
+    margin: -16px -16px 0;
+    padding: 10px 16px;
+  }
+  .ops-ed-body,
+  .ops-ed-body.with-preview {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .ops-ed-body > .ops-outline {
+    display: none;
+  }
+  .ops-ed-foot {
+    margin: 0 -16px -16px;
+    padding: 10px 16px;
+  }
+}
+@media (max-width: 767.98px) {
+  .ops-ed-head {
+    margin: -12px -12px 0;
+    padding: 10px 12px;
+    flex-wrap: wrap;
+    .actions {
+      width: 100%;
+      .ce-btn {
+        flex: 1;
+      }
+    }
+  }
+  .ops-ed-foot {
+    margin: 0 -12px;
+    padding: 10px 12px;
+    flex-wrap: wrap;
+    .sum {
+      width: 100%;
+    }
+    .spacer {
+      display: none;
+    }
+    .ce-btn {
+      flex: 1;
+    }
+  }
+}
+.app-shell.phone .ops-ed-foot {
+  bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px));
+}
+
+
+/* accordion sections (reference 06: "Response configuration ——— ⌄") */
+.ops-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.ops-acc-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--c-text);
+  font: 600 14px/1 var(--font);
+  cursor: pointer;
+  .line {
+    flex: 1;
+    height: 1px;
+    background: var(--c-border-strong);
+  }
+  .mat-icon {
+    color: var(--c-text-3);
+  }
+}
+.ops-acc-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 4px 0 12px;
+}
+
+.sch-l {
+  min-width: 92px;
+}
+@media (max-width: 599.98px) {
+  .sch-l {
+    flex-basis: 100%;
+    min-width: 0;
+  }
+}

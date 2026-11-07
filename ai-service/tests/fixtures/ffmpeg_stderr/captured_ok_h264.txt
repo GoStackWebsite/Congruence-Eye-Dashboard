@@ -1,0 +1,56 @@
+[tcp @ 0x56489db4b540] Starting connection attempt to 127.0.0.1 port 34313
+[tcp @ 0x56489db4b540] Successfully connected to 127.0.0.1 port 34313
+[rtsp @ 0x56489db8a140] SDP:
+v=0
+o=- 318349218 1 IN IP4 127.0.0.1
+s=Congruence Eye test DVR
+t=0 0
+a=control:*
+m=video 0 RTP/AVP 96
+c=IN IP4 0.0.0.0
+a=rtpmap:96 H264/90000
+a=fmtp:96 packetization-mode=1;profile-level-id=42C016;sprop-parameter-sets=Z0LAFtkAoC/5cBEAAAMAAQAAAwAUDxYuSA==,aMuDyyA=
+a=control:trackID=1
+
+[rtsp @ 0x56489db8a140] setting jitter buffer size to 0
+[h264 @ 0x56489db8e580] Reinit context to 640x368, pix_fmt: yuv420p
+Input #0, rtsp, from 'rtsp://admin:secret@127.0.0.1:34313/ok':
+  Metadata:
+    title           : Congruence Eye test DVR
+  Duration: N/A, start: 0.100000, bitrate: N/A
+  Stream #0:0: Video: h264 (Constrained Baseline), 1 reference frame, yuv420p(progressive, left), 640x360 (640x368) [SAR 1:1 DAR 16:9], 10 fps, 10 tbr, 90k tbn
+[out#0/image2pipe @ 0x56489db92e40] No explicit maps, mapping streams automatically...
+[vost#0:0/mjpeg @ 0x56489dbfc1c0] Created video stream from input stream 0:0
+[Parsed_scale_0 @ 0x56489dc14100] w:min(1280,iw) h:-2 flags:'' interl:0
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> mjpeg (native))
+[h264 @ 0x56489dbf8fc0] Reinit context to 640x368, pix_fmt: yuv420p
+[Parsed_scale_0 @ 0x56489dbf56c0] w:min(1280,iw) h:-2 flags:'' interl:0
+[graph 0 input from stream 0:0 @ 0x56489dbf5c00] w:640 h:360 pixfmt:yuv420p tb:1/90000 fr:10/1 sar:1/1
+[swscaler @ 0x56489dc8ef40] deprecated pixel format used, make sure you did set range correctly
+[Parsed_scale_0 @ 0x56489dbf56c0] w:640 h:360 fmt:yuv420p sar:1/1 -> w:640 h:360 fmt:yuvj420p sar:1/1 flags:0x00000004
+Output #0, image2pipe, to 'pipe:1':
+  Metadata:
+    title           : Congruence Eye test DVR
+    encoder         : Lavf60.16.100
+  Stream #0:0: Video: mjpeg, 1 reference frame, yuvj420p(pc, progressive, left), 640x360 (0x0) [SAR 1:1 DAR 16:9], q=2-31, 200 kb/s, 10 fps, 10 tbn
+    Metadata:
+      encoder         : Lavc60.31.102 mjpeg
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/200000 buffer size: 0 vbv_delay: N/A
+frame=    0 fps=0.0 q=4.0 size=       0kB time=00:00:00.00 bitrate=N/A speed=   0x    No more output streams to write to, finishing.
+[out#0/image2pipe @ 0x56489db92e40] All streams finished
+[out#0/image2pipe @ 0x56489db92e40] Terminating muxer thread
+[vist#0:0/h264 @ 0x56489db92880] Decoder thread received EOF packet
+[vist#0:0/h264 @ 0x56489db92880] Decoder returned EOF, finishing
+[vist#0:0/h264 @ 0x56489db92880] Terminating decoder thread
+[AVIOContext @ 0x56489dbf4880] Statistics: 10529 bytes written, 0 seeks, 1 writeouts
+[out#0/image2pipe @ 0x56489db92e40] Output file #0 (pipe:1):
+[out#0/image2pipe @ 0x56489db92e40]   Output stream #0:0 (video): 1 frames encoded; 1 packets muxed (10529 bytes); 
+[out#0/image2pipe @ 0x56489db92e40]   Total: 1 packets (10529 bytes) muxed
+[out#0/image2pipe @ 0x56489db92e40] video:10kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=    1 fps=0.0 q=4.0 Lsize=      10kB time=00:00:00.00 bitrate=N/A speed=   0x    
+[in#0/rtsp @ 0x56489db8a040] Terminating demuxer thread
+[in#0/rtsp @ 0x56489db8a040] Input file #0 (rtsp://admin:secret@127.0.0.1:34313/ok):
+[in#0/rtsp @ 0x56489db8a040]   Input stream #0:0 (video): 5 packets read (9096 bytes); 3 frames decoded; 0 decode errors; 
+[in#0/rtsp @ 0x56489db8a040]   Total: 5 packets (9096 bytes) demuxed

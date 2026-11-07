@@ -1,0 +1,886 @@
+{
+  "description": "Shared RTSP URL templating vectors (contract v3). Checked by backend recorder-url.spec.ts and ai-service tests/test_recorder_urls.py.",
+  "cases": [
+    {
+      "name": "HIKVISION MAIN ch1",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "HIKVISION",
+        "urlTemplate": null
+      },
+      "channel": 1,
+      "stream": "MAIN",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/Streaming/Channels/101",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/Streaming/Channels/101"
+    },
+    {
+      "name": "HIKVISION MAIN ch3",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "HIKVISION",
+        "urlTemplate": null
+      },
+      "channel": 3,
+      "stream": "MAIN",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/Streaming/Channels/301",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/Streaming/Channels/301"
+    },
+    {
+      "name": "HIKVISION MAIN ch12",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "HIKVISION",
+        "urlTemplate": null
+      },
+      "channel": 12,
+      "stream": "MAIN",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/Streaming/Channels/1201",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/Streaming/Channels/1201"
+    },
+    {
+      "name": "HIKVISION SUB ch1",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "HIKVISION",
+        "urlTemplate": null
+      },
+      "channel": 1,
+      "stream": "SUB",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/Streaming/Channels/102",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/Streaming/Channels/102"
+    },
+    {
+      "name": "HIKVISION SUB ch3",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "HIKVISION",
+        "urlTemplate": null
+      },
+      "channel": 3,
+      "stream": "SUB",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/Streaming/Channels/302",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/Streaming/Channels/302"
+    },
+    {
+      "name": "HIKVISION SUB ch12",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "HIKVISION",
+        "urlTemplate": null
+      },
+      "channel": 12,
+      "stream": "SUB",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/Streaming/Channels/1202",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/Streaming/Channels/1202"
+    },
+    {
+      "name": "CP_PLUS MAIN ch1",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "CP_PLUS",
+        "urlTemplate": null
+      },
+      "channel": 1,
+      "stream": "MAIN",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/cam/realmonitor?channel=1&subtype=0",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/cam/realmonitor?channel=1&subtype=0"
+    },
+    {
+      "name": "CP_PLUS MAIN ch3",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "CP_PLUS",
+        "urlTemplate": null
+      },
+      "channel": 3,
+      "stream": "MAIN",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/cam/realmonitor?channel=3&subtype=0",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/cam/realmonitor?channel=3&subtype=0"
+    },
+    {
+      "name": "CP_PLUS MAIN ch12",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "CP_PLUS",
+        "urlTemplate": null
+      },
+      "channel": 12,
+      "stream": "MAIN",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/cam/realmonitor?channel=12&subtype=0",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/cam/realmonitor?channel=12&subtype=0"
+    },
+    {
+      "name": "CP_PLUS SUB ch1",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "CP_PLUS",
+        "urlTemplate": null
+      },
+      "channel": 1,
+      "stream": "SUB",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/cam/realmonitor?channel=1&subtype=1",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/cam/realmonitor?channel=1&subtype=1"
+    },
+    {
+      "name": "CP_PLUS SUB ch3",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "CP_PLUS",
+        "urlTemplate": null
+      },
+      "channel": 3,
+      "stream": "SUB",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/cam/realmonitor?channel=3&subtype=1",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/cam/realmonitor?channel=3&subtype=1"
+    },
+    {
+      "name": "CP_PLUS SUB ch12",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "CP_PLUS",
+        "urlTemplate": null
+      },
+      "channel": 12,
+      "stream": "SUB",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/cam/realmonitor?channel=12&subtype=1",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/cam/realmonitor?channel=12&subtype=1"
+    },
+    {
+      "name": "DAHUA MAIN ch1",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "DAHUA",
+        "urlTemplate": null
+      },
+      "channel": 1,
+      "stream": "MAIN",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/cam/realmonitor?channel=1&subtype=0",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/cam/realmonitor?channel=1&subtype=0"
+    },
+    {
+      "name": "DAHUA MAIN ch3",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "DAHUA",
+        "urlTemplate": null
+      },
+      "channel": 3,
+      "stream": "MAIN",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/cam/realmonitor?channel=3&subtype=0",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/cam/realmonitor?channel=3&subtype=0"
+    },
+    {
+      "name": "DAHUA MAIN ch12",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "DAHUA",
+        "urlTemplate": null
+      },
+      "channel": 12,
+      "stream": "MAIN",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/cam/realmonitor?channel=12&subtype=0",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/cam/realmonitor?channel=12&subtype=0"
+    },
+    {
+      "name": "DAHUA SUB ch1",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "DAHUA",
+        "urlTemplate": null
+      },
+      "channel": 1,
+      "stream": "SUB",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/cam/realmonitor?channel=1&subtype=1",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/cam/realmonitor?channel=1&subtype=1"
+    },
+    {
+      "name": "DAHUA SUB ch3",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "DAHUA",
+        "urlTemplate": null
+      },
+      "channel": 3,
+      "stream": "SUB",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/cam/realmonitor?channel=3&subtype=1",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/cam/realmonitor?channel=3&subtype=1"
+    },
+    {
+      "name": "DAHUA SUB ch12",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "DAHUA",
+        "urlTemplate": null
+      },
+      "channel": 12,
+      "stream": "SUB",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/cam/realmonitor?channel=12&subtype=1",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/cam/realmonitor?channel=12&subtype=1"
+    },
+    {
+      "name": "UNIVIEW MAIN ch1",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "UNIVIEW",
+        "urlTemplate": null
+      },
+      "channel": 1,
+      "stream": "MAIN",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/unicast/c1/s0/live",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/unicast/c1/s0/live"
+    },
+    {
+      "name": "UNIVIEW MAIN ch3",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "UNIVIEW",
+        "urlTemplate": null
+      },
+      "channel": 3,
+      "stream": "MAIN",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/unicast/c3/s0/live",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/unicast/c3/s0/live"
+    },
+    {
+      "name": "UNIVIEW MAIN ch12",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "UNIVIEW",
+        "urlTemplate": null
+      },
+      "channel": 12,
+      "stream": "MAIN",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/unicast/c12/s0/live",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/unicast/c12/s0/live"
+    },
+    {
+      "name": "UNIVIEW SUB ch1",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "UNIVIEW",
+        "urlTemplate": null
+      },
+      "channel": 1,
+      "stream": "SUB",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/unicast/c1/s1/live",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/unicast/c1/s1/live"
+    },
+    {
+      "name": "UNIVIEW SUB ch3",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "UNIVIEW",
+        "urlTemplate": null
+      },
+      "channel": 3,
+      "stream": "SUB",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/unicast/c3/s1/live",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/unicast/c3/s1/live"
+    },
+    {
+      "name": "UNIVIEW SUB ch12",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "UNIVIEW",
+        "urlTemplate": null
+      },
+      "channel": 12,
+      "stream": "SUB",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/unicast/c12/s1/live",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/unicast/c12/s1/live"
+    },
+    {
+      "name": "GODREJ MAIN ch1",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "GODREJ",
+        "urlTemplate": null
+      },
+      "channel": 1,
+      "stream": "MAIN",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/cam/realmonitor?channel=1&subtype=0",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/cam/realmonitor?channel=1&subtype=0"
+    },
+    {
+      "name": "GODREJ MAIN ch3",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "GODREJ",
+        "urlTemplate": null
+      },
+      "channel": 3,
+      "stream": "MAIN",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/cam/realmonitor?channel=3&subtype=0",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/cam/realmonitor?channel=3&subtype=0"
+    },
+    {
+      "name": "GODREJ MAIN ch12",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "GODREJ",
+        "urlTemplate": null
+      },
+      "channel": 12,
+      "stream": "MAIN",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/cam/realmonitor?channel=12&subtype=0",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/cam/realmonitor?channel=12&subtype=0"
+    },
+    {
+      "name": "GODREJ SUB ch1",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "GODREJ",
+        "urlTemplate": null
+      },
+      "channel": 1,
+      "stream": "SUB",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/cam/realmonitor?channel=1&subtype=1",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/cam/realmonitor?channel=1&subtype=1"
+    },
+    {
+      "name": "GODREJ SUB ch3",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "GODREJ",
+        "urlTemplate": null
+      },
+      "channel": 3,
+      "stream": "SUB",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/cam/realmonitor?channel=3&subtype=1",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/cam/realmonitor?channel=3&subtype=1"
+    },
+    {
+      "name": "GODREJ SUB ch12",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "GODREJ",
+        "urlTemplate": null
+      },
+      "channel": 12,
+      "stream": "SUB",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/cam/realmonitor?channel=12&subtype=1",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/cam/realmonitor?channel=12&subtype=1"
+    },
+    {
+      "name": "HONEYWELL MAIN ch1",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "HONEYWELL",
+        "urlTemplate": null
+      },
+      "channel": 1,
+      "stream": "MAIN",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/cam/realmonitor?channel=1&subtype=0",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/cam/realmonitor?channel=1&subtype=0"
+    },
+    {
+      "name": "HONEYWELL MAIN ch3",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "HONEYWELL",
+        "urlTemplate": null
+      },
+      "channel": 3,
+      "stream": "MAIN",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/cam/realmonitor?channel=3&subtype=0",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/cam/realmonitor?channel=3&subtype=0"
+    },
+    {
+      "name": "HONEYWELL MAIN ch12",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "HONEYWELL",
+        "urlTemplate": null
+      },
+      "channel": 12,
+      "stream": "MAIN",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/cam/realmonitor?channel=12&subtype=0",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/cam/realmonitor?channel=12&subtype=0"
+    },
+    {
+      "name": "HONEYWELL SUB ch1",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "HONEYWELL",
+        "urlTemplate": null
+      },
+      "channel": 1,
+      "stream": "SUB",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/cam/realmonitor?channel=1&subtype=1",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/cam/realmonitor?channel=1&subtype=1"
+    },
+    {
+      "name": "HONEYWELL SUB ch3",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "HONEYWELL",
+        "urlTemplate": null
+      },
+      "channel": 3,
+      "stream": "SUB",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/cam/realmonitor?channel=3&subtype=1",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/cam/realmonitor?channel=3&subtype=1"
+    },
+    {
+      "name": "HONEYWELL SUB ch12",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "HONEYWELL",
+        "urlTemplate": null
+      },
+      "channel": 12,
+      "stream": "SUB",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/cam/realmonitor?channel=12&subtype=1",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/cam/realmonitor?channel=12&subtype=1"
+    },
+    {
+      "name": "TIANDY MAIN ch1",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "TIANDY",
+        "urlTemplate": null
+      },
+      "channel": 1,
+      "stream": "MAIN",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/1/1",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/1/1"
+    },
+    {
+      "name": "TIANDY MAIN ch3",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "TIANDY",
+        "urlTemplate": null
+      },
+      "channel": 3,
+      "stream": "MAIN",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/3/1",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/3/1"
+    },
+    {
+      "name": "TIANDY MAIN ch12",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "TIANDY",
+        "urlTemplate": null
+      },
+      "channel": 12,
+      "stream": "MAIN",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/12/1",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/12/1"
+    },
+    {
+      "name": "TIANDY SUB ch1",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "TIANDY",
+        "urlTemplate": null
+      },
+      "channel": 1,
+      "stream": "SUB",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/1/2",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/1/2"
+    },
+    {
+      "name": "TIANDY SUB ch3",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "TIANDY",
+        "urlTemplate": null
+      },
+      "channel": 3,
+      "stream": "SUB",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/3/2",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/3/2"
+    },
+    {
+      "name": "TIANDY SUB ch12",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "TIANDY",
+        "urlTemplate": null
+      },
+      "channel": 12,
+      "stream": "SUB",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/12/2",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/12/2"
+    },
+    {
+      "name": "GENERIC_ONVIF MAIN ch1",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "GENERIC_ONVIF",
+        "urlTemplate": null
+      },
+      "channel": 1,
+      "stream": "MAIN",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/ch1/main",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/ch1/main"
+    },
+    {
+      "name": "GENERIC_ONVIF MAIN ch3",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "GENERIC_ONVIF",
+        "urlTemplate": null
+      },
+      "channel": 3,
+      "stream": "MAIN",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/ch3/main",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/ch3/main"
+    },
+    {
+      "name": "GENERIC_ONVIF MAIN ch12",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "GENERIC_ONVIF",
+        "urlTemplate": null
+      },
+      "channel": 12,
+      "stream": "MAIN",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/ch12/main",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/ch12/main"
+    },
+    {
+      "name": "GENERIC_ONVIF SUB ch1",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "GENERIC_ONVIF",
+        "urlTemplate": null
+      },
+      "channel": 1,
+      "stream": "SUB",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/ch1/sub",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/ch1/sub"
+    },
+    {
+      "name": "GENERIC_ONVIF SUB ch3",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "GENERIC_ONVIF",
+        "urlTemplate": null
+      },
+      "channel": 3,
+      "stream": "SUB",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/ch3/sub",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/ch3/sub"
+    },
+    {
+      "name": "GENERIC_ONVIF SUB ch12",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "GENERIC_ONVIF",
+        "urlTemplate": null
+      },
+      "channel": 12,
+      "stream": "SUB",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/ch12/sub",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/ch12/sub"
+    },
+    {
+      "name": "CUSTOM MAIN ch1",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "CUSTOM",
+        "urlTemplate": "rtsp://{user}:{pass}@{host}:{port}/live/ch{channel}?token=1"
+      },
+      "channel": 1,
+      "stream": "MAIN",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/live/ch1?token=1",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/live/ch1?token=1"
+    },
+    {
+      "name": "CUSTOM MAIN ch3",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "CUSTOM",
+        "urlTemplate": "rtsp://{user}:{pass}@{host}:{port}/live/ch{channel}?token=1"
+      },
+      "channel": 3,
+      "stream": "MAIN",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/live/ch3?token=1",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/live/ch3?token=1"
+    },
+    {
+      "name": "CUSTOM MAIN ch12",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "CUSTOM",
+        "urlTemplate": "rtsp://{user}:{pass}@{host}:{port}/live/ch{channel}?token=1"
+      },
+      "channel": 12,
+      "stream": "MAIN",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/live/ch12?token=1",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/live/ch12?token=1"
+    },
+    {
+      "name": "CUSTOM SUB ch1",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "CUSTOM",
+        "urlTemplate": "rtsp://{user}:{pass}@{host}:{port}/live/ch{channel}?token=1"
+      },
+      "channel": 1,
+      "stream": "SUB",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/live/ch1?token=1",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/live/ch1?token=1"
+    },
+    {
+      "name": "CUSTOM SUB ch3",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "CUSTOM",
+        "urlTemplate": "rtsp://{user}:{pass}@{host}:{port}/live/ch{channel}?token=1"
+      },
+      "channel": 3,
+      "stream": "SUB",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/live/ch3?token=1",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/live/ch3?token=1"
+    },
+    {
+      "name": "CUSTOM SUB ch12",
+      "input": {
+        "host": "10.0.0.20",
+        "rtspPort": 554,
+        "username": "admin",
+        "brand": "CUSTOM",
+        "urlTemplate": "rtsp://{user}:{pass}@{host}:{port}/live/ch{channel}?token=1"
+      },
+      "channel": 12,
+      "stream": "SUB",
+      "password": "p@ss:w/rd#1",
+      "expected": "rtsp://admin:p%40ss%3Aw%2Frd%231@10.0.0.20:554/live/ch12?token=1",
+      "expectedMasked": "rtsp://admin:****@10.0.0.20:554/live/ch12?token=1"
+    },
+    {
+      "name": "IPv6 host",
+      "input": {
+        "brand": "HIKVISION",
+        "host": "fe80::1",
+        "rtspPort": 8554,
+        "username": "admin"
+      },
+      "channel": 2,
+      "stream": "MAIN",
+      "password": "secret",
+      "expected": "rtsp://admin:secret@[fe80::1]:8554/Streaming/Channels/201",
+      "expectedMasked": "rtsp://admin:****@[fe80::1]:8554/Streaming/Channels/201"
+    },
+    {
+      "name": "hostname, no password",
+      "input": {
+        "brand": "DAHUA",
+        "host": "dvr-tnagar.local",
+        "rtspPort": 554,
+        "username": "viewer"
+      },
+      "channel": 4,
+      "stream": "SUB",
+      "password": null,
+      "expected": "rtsp://viewer@dvr-tnagar.local:554/cam/realmonitor?channel=4&subtype=1",
+      "expectedMasked": "rtsp://viewer@dvr-tnagar.local:554/cam/realmonitor?channel=4&subtype=1"
+    },
+    {
+      "name": "no user, no password",
+      "input": {
+        "brand": "TIANDY",
+        "host": "192.168.1.64",
+        "rtspPort": 554,
+        "username": ""
+      },
+      "channel": 1,
+      "stream": "MAIN",
+      "password": "",
+      "expected": "rtsp://192.168.1.64:554/1/1",
+      "expectedMasked": "rtsp://192.168.1.64:554/1/1"
+    },
+    {
+      "name": "special user and unicode password",
+      "input": {
+        "brand": "UNIVIEW",
+        "host": "10.1.2.3",
+        "rtspPort": 10554,
+        "username": "ops user@store"
+      },
+      "channel": 7,
+      "stream": "SUB",
+      "password": "Ünï!*'()~ %+&=",
+      "expected": "rtsp://ops%20user%40store:%C3%9Cn%C3%AF!*'()~%20%25%2B%26%3D@10.1.2.3:10554/unicast/c7/s1/live",
+      "expectedMasked": "rtsp://ops%20user%40store:****@10.1.2.3:10554/unicast/c7/s1/live"
+    },
+    {
+      "name": "custom without credentials",
+      "input": {
+        "brand": "CUSTOM",
+        "host": "10.9.9.9",
+        "rtspPort": 554,
+        "username": "admin",
+        "urlTemplate": "rtsp://{host}:{port}/stream{channel}"
+      },
+      "channel": 5,
+      "stream": "MAIN",
+      "password": "x",
+      "expected": "rtsp://10.9.9.9:554/stream5",
+      "expectedMasked": "rtsp://10.9.9.9:554/stream5"
+    }
+  ]
+}

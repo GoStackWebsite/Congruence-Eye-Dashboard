@@ -1,0 +1,115 @@
+/*
+ * Design System v2 tokens (docs/DESIGN_SYSTEM.md). Light values first; dark mode mirrors them via light-dark()
+ * driven by `color-scheme` on <html> (ThemeService sets html.dark-theme / color-scheme: dark).
+ */
+:root {
+  /* shell */
+  --c-rail: light-dark(#0e1a33, #070d1a);
+  --c-rail-active: light-dark(#1d2b4a, #17233d);
+  --c-rail-icon: #8c96ab;
+  --c-rail-icon-active: #ffffff;
+
+  /* surfaces */
+  --c-bg: light-dark(#f4f6fa, #0c111d);
+  --c-surface: light-dark(#ffffff, #161b26);
+  --c-surface-2: light-dark(#f8fafc, #1b2130);
+  --c-surface-3: light-dark(#f2f4f7, #222838);
+  --c-border: light-dark(#e4e7ec, #2a3142);
+  --c-border-strong: light-dark(#d0d5dd, #3a4254);
+  --c-hover: light-dark(#f5f8fc, #1e2534);
+
+  /* text */
+  --c-text: light-dark(#101828, #f5f5f6);
+  --c-text-2: light-dark(#475467, #c2c6ce);
+  --c-text-3: light-dark(#667085, #868c98); /* captions & meta: ≥ 4.5:1 on every surface (WCAG AA) */
+
+  /* brand */
+  /* #0ba5ec (v2 spec) only reached 2.8:1 under white button text; #0077b6 keeps the hue at 4.9:1 (WCAG AA) */
+  --c-primary: #0077b6;
+  --c-primary-hover: #026aa2;
+  --c-primary-bright: #0ba5ec; /* decorative accents only (never under / as text) */
+  --c-primary-soft: light-dark(#e0f2fe, rgba(11, 165, 236, 0.16));
+  --c-primary-ink: light-dark(#026aa2, #7cd4fd);
+  --c-link: light-dark(#026aa2, #36bffa);
+  --c-band-from: light-dark(#e8f3fd, #172a44);
+  --c-band-to: light-dark(#f3f8fe, #161f30);
+  --c-tile-band: linear-gradient(180deg, var(--c-band-from) 0%, var(--c-band-to) 100%);
+  --c-tile-band-flat: light-dark(#eef6fe, #18263b);
+  --c-brand-grad: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  --c-focus-ring: 0 0 0 3px light-dark(rgba(11, 165, 236, 0.24), rgba(11, 165, 236, 0.4));
+
+  /* status */
+  --c-success-text: light-dark(#027a48, #75e0a7);
+  --c-success-bg: light-dark(#ecfdf3, rgba(18, 183, 106, 0.14));
+  --c-success: #12b76a;
+  --c-warning-text: light-dark(#b54708, #fec84b);
+  --c-warning-bg: light-dark(#fffaeb, rgba(247, 144, 9, 0.14));
+  --c-warning: #f79009;
+  --c-danger-text: light-dark(#b42318, #fda29b);
+  --c-danger-bg: light-dark(#fef3f2, rgba(240, 68, 56, 0.14));
+  --c-danger: #f04438;
+  --c-info-text: light-dark(#175cd3, #84caff);
+  --c-info-bg: light-dark(#eff8ff, rgba(46, 144, 250, 0.14));
+  --c-info: #2e90fa;
+  --c-neutral-text: light-dark(#344054, #cecfd2);
+  --c-neutral-bg: light-dark(#f2f4f7, #252b39);
+
+  /* data (chart categorical order validated with the dataviz validator; see chart-theme.ts) */
+  --c-series-1: light-dark(#2e90fa, #2e90fa);
+  --c-series-2: light-dark(#f79009, #dc6803);
+  --c-series-3: light-dark(#7a5af8, #7a5af8);
+  --c-series-4: light-dark(#12b76a, #039855);
+  --c-series-5: light-dark(#ee46bc, #dd2590);
+  --c-heat: linear-gradient(90deg, #7a5af8 0%, #2e90fa 20%, #36bffa 40%, #fde047 60%, #f97316 80%, #dc2626 100%);
+  --c-engagers: linear-gradient(90deg, #b692f6 0%, #ee46bc 55%, #f04438 100%);
+
+  /* shape & elevation */
+  --r-control: 8px;
+  --r-card: 10px;
+  --r-pill: 999px;
+  --shadow-overlay: 0 12px 24px -4px rgba(16, 24, 40, 0.12), 0 4px 8px -2px rgba(16, 24, 40, 0.06);
+  --shadow-xs: 0 1px 2px rgba(16, 24, 40, 0.04);
+
+  /* layout */
+  --rail-w: 64px;
+  --panel-w: 224px;
+  --topbar-h: 56px;
+  --tabbar-h: 60px;
+
+  /* type */
+  --font: 'Inter Variable', Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --fs-title: 18px;
+  --lh-title: 26px;
+  --fs-section: 15px;
+  --lh-section: 22px;
+  --fs-body: 13px;
+  --lh-body: 20px;
+  --fs-label: 12px;
+  --lh-label: 18px;
+  --fs-caption: 11px;
+  --lh-caption: 16px;
+  --fs-kpi: 22px;
+  --lh-kpi: 30px;
+  --fs-hero: 28px;
+  --lh-hero: 36px;
+
+  /* legacy aliases (pages written against v1 tokens keep working) */
+  --ce-bg: var(--c-bg);
+  --ce-surface: var(--c-surface);
+  --ce-surface-2: var(--c-surface-2);
+  --ce-border: var(--c-border);
+  --ce-text: var(--c-text);
+  --ce-muted: var(--c-text-2);
+  --ce-primary: var(--c-primary);
+  --ce-good: var(--c-success);
+  --ce-good-text: var(--c-success-text);
+  --ce-warning: var(--c-warning);
+  --ce-warning-text: var(--c-warning-text);
+  --ce-serious: #ef6820;
+  --ce-serious-text: light-dark(#c4320a, #f7b27a);
+  --ce-critical: var(--c-danger);
+  --ce-critical-text: var(--c-danger-text);
+  --ce-info-text: var(--c-info-text);
+  --ce-radius: var(--r-card);
+  --ce-shadow: none;
+}

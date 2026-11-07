@@ -1,0 +1,6 @@
+[tcp @ 0x5555de8eb540] Starting connection attempt to 127.0.0.1 port 35003
+[tcp @ 0x5555de8eb540] Connection attempt to 127.0.0.1 port 35003 failed: Connection refused
+[tcp @ 0x5555de8eb540] Connection to tcp://127.0.0.1:35003?timeout=3000000 failed: Connection refused
+[in#0 @ 0x5555de92a040] Error opening input: Connection refused
+Error opening input file rtsp://admin:x@127.0.0.1:35003/x.
+Error opening input files: Connection refused

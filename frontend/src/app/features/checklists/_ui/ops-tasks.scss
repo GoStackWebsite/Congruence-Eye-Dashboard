@@ -1,0 +1,218 @@
+/* ---------------------------------------------------------------- tasks kanban */
+.kb-board {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(196px, 1fr)); /* the five columns fit 1440 px with the module panel open */
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  align-items: start;
+}
+.kb-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  min-height: 360px;
+  background: var(--c-surface-2);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-card);
+  .kb-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 2px 4px 4px;
+    .ct {
+      margin-left: auto;
+      font-size: 12px;
+      color: var(--c-text-3);
+      font-variant-numeric: tabular-nums;
+    }
+  }
+  .kanban-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 120px;
+  }
+  .kb-empty {
+    display: grid;
+    place-items: center;
+    min-height: 80px;
+    border: 1px dashed var(--c-border-strong);
+    border-radius: 8px;
+    font-size: 12px;
+    color: var(--c-text-3);
+  }
+}
+.kb-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: 10px;
+  cursor: grab;
+  &:hover {
+    border-color: var(--c-border-strong);
+  }
+  .top {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .title {
+    flex: 1;
+    min-width: 0;
+    font-weight: 600;
+    color: var(--c-text);
+    line-height: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    cursor: pointer;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 8px;
+    font-size: 12px;
+    color: var(--c-text-2);
+    span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      min-width: 0;
+    }
+    .material-symbols-outlined {
+      font-size: 14px;
+      color: var(--c-text-3);
+    }
+    .over,
+    .over .material-symbols-outlined {
+      color: var(--c-danger-text);
+      font-weight: 500;
+    }
+  }
+  .foot {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--c-border);
+    font-size: 12px;
+    color: var(--c-text-2);
+    .grow {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+  &.cdk-drag-preview {
+    box-shadow: var(--shadow-overlay);
+  }
+}
+.kb-proof {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--c-text-2);
+  img {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    object-fit: cover;
+    border: 1px solid var(--c-border);
+  }
+  span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+.kb-status-select.mat-mdc-form-field {
+  width: 136px;
+}
+.ops-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  li {
+    position: relative;
+    display: flex;
+    gap: 12px;
+    padding-bottom: 16px;
+    &:last-child {
+      padding-bottom: 0;
+    }
+    &:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 11px;
+      top: 24px;
+      bottom: 0;
+      width: 2px;
+      background: var(--c-border);
+    }
+  }
+  .ic {
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--c-surface-3);
+    color: var(--c-text-3);
+    .material-symbols-outlined {
+      font-size: 15px;
+    }
+    &.on {
+      background: var(--c-primary-soft);
+      color: var(--c-primary-ink);
+    }
+    &.good {
+      background: var(--c-success-bg);
+      color: var(--c-success-text);
+    }
+  }
+  .tx {
+    font-size: 13px;
+    color: var(--c-text);
+    padding-top: 2px;
+    small {
+      display: block;
+      font-size: 12px;
+      color: var(--c-text-3);
+    }
+  }
+}
+.ops-proof-img {
+  display: block;
+  width: 100%;
+  max-height: 280px;
+  object-fit: contain;
+  background: var(--c-surface-3);
+  border-radius: 10px;
+  border: 1px solid var(--c-border);
+}
+@media (max-width: 767.98px) {
+  .kb-board {
+    grid-template-columns: repeat(5, minmax(78vw, 1fr));
+    scroll-snap-type: x mandatory;
+    .kb-col {
+      scroll-snap-align: start;
+    }
+  }
+}
+

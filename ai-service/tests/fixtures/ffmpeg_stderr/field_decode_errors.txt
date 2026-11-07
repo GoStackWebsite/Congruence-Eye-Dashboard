@@ -1,0 +1,7 @@
+Input #0, rtsp, from 'rtsp://admin:****@10.0.0.20:554/cam/realmonitor?channel=2&subtype=1':
+  Stream #0:0: Video: h264 (Main), yuvj420p(pc, bt709, progressive), 704x576, 12.50 fps, 12.50 tbr, 90k tbn
+[h264 @ 0x5583a1d5e2c0] non-existing PPS 0 referenced
+[h264 @ 0x5583a1d5e2c0] decode_slice_header error
+[h264 @ 0x5583a1d5e2c0] no frame!
+[vist#0:0/h264 @ 0x5583a1d4bc00] Decoding error: Invalid data found when processing input
+Error while decoding stream #0:0: Invalid data found when processing input

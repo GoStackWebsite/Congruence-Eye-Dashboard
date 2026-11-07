@@ -1,0 +1,656 @@
+@use '@angular/material' as mat;
+
+/*
+ * Angular Material is kept only as a behaviour layer (overlays, a11y, keyboard handling). Every visible token is
+ * re-pointed at the DS tokens so components look like the rest of the product: 36px outlined compact fields,
+ * 8px controls, primary #0BA5EC, small switches, flat menus/dialogs with the overlay shadow.
+ */
+html {
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$azure-palette,
+        tertiary: mat.$violet-palette,
+      ),
+      typography: (
+        plain-family: var(--font),
+        brand-family: var(--font),
+      ),
+      density: -2,
+    )
+  );
+
+  // system tokens → DS tokens (light-dark() aware)
+  --mat-sys-primary: var(--c-primary);
+  --mat-sys-on-primary: #ffffff;
+  --mat-sys-primary-container: var(--c-primary-soft);
+  --mat-sys-on-primary-container: var(--c-primary-ink);
+  --mat-sys-secondary-container: var(--c-primary-soft);
+  --mat-sys-on-secondary-container: var(--c-primary-ink);
+  --mat-sys-tertiary-container: light-dark(#ebe9fe, #2b2253);
+  --mat-sys-on-tertiary-container: light-dark(#5925dc, #d9d6fe);
+  --mat-sys-surface: var(--c-surface);
+  --mat-sys-surface-bright: var(--c-surface);
+  --mat-sys-surface-dim: var(--c-surface-2);
+  --mat-sys-surface-container-lowest: var(--c-surface);
+  --mat-sys-surface-container-low: var(--c-surface);
+  --mat-sys-surface-container: var(--c-surface);
+  --mat-sys-surface-container-high: var(--c-surface);
+  --mat-sys-surface-container-highest: var(--c-surface-3);
+  --mat-sys-surface-variant: var(--c-surface-2);
+  --mat-sys-on-surface: var(--c-text);
+  --mat-sys-on-surface-variant: var(--c-text-2);
+  --mat-sys-outline: var(--c-border-strong);
+  --mat-sys-outline-variant: var(--c-border);
+  --mat-sys-error: var(--c-danger);
+  --mat-sys-on-error: #ffffff;
+  --mat-sys-error-container: var(--c-danger-bg);
+  --mat-sys-on-error-container: var(--c-danger-text);
+  --mat-sys-inverse-surface: light-dark(#101828, #f5f5f6);
+  --mat-sys-inverse-on-surface: light-dark(#ffffff, #101828);
+  --mat-sys-inverse-primary: #7cd4fd;
+  --mat-sys-body-large-size: 13px;
+  --mat-sys-body-medium-size: 13px;
+  --mat-sys-label-large-size: 13px;
+  --mat-sys-body-large-tracking: 0;
+  --mat-sys-body-medium-tracking: 0;
+  --mat-sys-body-small-tracking: 0;
+  --mat-sys-label-large-tracking: 0;
+  --mat-sys-label-medium-tracking: 0;
+  --mat-sys-label-small-tracking: 0;
+  --mat-sys-title-small-tracking: 0;
+  --mat-sys-title-medium-tracking: 0;
+
+  @include mat.form-field-overrides(
+    (
+      container-height: 36px,
+      container-vertical-padding: 7px,
+      container-text-size: 13px,
+      container-text-line-height: 20px,
+      outlined-container-shape: 8px,
+      outlined-outline-color: var(--c-border-strong),
+      outlined-hover-outline-color: light-dark(#98a2b3, #5a6275),
+      outlined-focus-outline-color: var(--c-primary),
+      outlined-focus-outline-width: 1px,
+      outlined-label-text-size: 13px,
+      outlined-label-text-populated-size: 12px,
+      outlined-label-text-color: var(--c-text-3),
+      outlined-hover-label-text-color: var(--c-text-2),
+      outlined-focus-label-text-color: var(--c-primary-ink),
+      outlined-input-text-color: var(--c-text),
+      outlined-input-text-placeholder-color: var(--c-text-3),
+      outlined-caret-color: var(--c-primary),
+      outlined-error-outline-color: var(--c-danger),
+      outlined-error-focus-outline-color: var(--c-danger),
+      outlined-error-hover-outline-color: var(--c-danger),
+      subscript-text-size: 11px,
+      subscript-text-line-height: 16px,
+      error-text-color: var(--c-danger-text),
+      enabled-select-arrow-color: var(--c-text-3),
+      focus-select-arrow-color: var(--c-primary),
+      filled-container-shape: 8px,
+    )
+  );
+
+  @include mat.button-overrides(
+    (
+      filled-container-shape: 8px,
+      filled-container-height: 36px,
+      filled-horizontal-padding: 14px,
+      filled-label-text-size: 13px,
+      filled-label-text-weight: 600,
+      filled-container-color: var(--c-primary),
+      filled-label-text-color: #ffffff,
+      filled-icon-spacing: 6px,
+      filled-icon-offset: -2px,
+      outlined-container-shape: 8px,
+      outlined-container-height: 36px,
+      outlined-horizontal-padding: 14px,
+      outlined-label-text-size: 13px,
+      outlined-label-text-weight: 600,
+      outlined-label-text-color: var(--c-text),
+      outlined-outline-color: var(--c-border-strong),
+      outlined-icon-spacing: 6px,
+      outlined-icon-offset: -2px,
+      text-container-shape: 8px,
+      text-container-height: 36px,
+      text-horizontal-padding: 10px,
+      text-label-text-size: 13px,
+      text-label-text-weight: 600,
+      text-label-text-color: var(--c-primary-ink),
+      text-icon-spacing: 6px,
+      text-icon-offset: -2px,
+      tonal-container-shape: 8px,
+      tonal-container-height: 36px,
+      tonal-label-text-size: 13px,
+      protected-container-shape: 8px,
+      protected-container-height: 36px,
+      protected-label-text-size: 13px,
+    )
+  );
+
+  @include mat.icon-button-overrides(
+    (
+      state-layer-size: 36px,
+      container-shape: 8px,
+      icon-color: var(--c-text-2),
+      icon-size: 20px,
+    )
+  );
+
+  @include mat.slide-toggle-overrides(
+    (
+      track-height: 20px,
+      track-width: 36px,
+      track-outline-width: 0,
+      selected-track-outline-width: 0,
+      handle-height: 16px,
+      handle-width: 16px,
+      selected-handle-size: 16px,
+      unselected-handle-size: 16px,
+      pressed-handle-size: 16px,
+      with-icon-handle-size: 16px,
+      selected-handle-horizontal-margin: 0 2px,
+      unselected-handle-horizontal-margin: 0 2px,
+      selected-with-icon-handle-horizontal-margin: 0 2px,
+      unselected-with-icon-handle-horizontal-margin: 0 2px,
+      selected-pressed-handle-horizontal-margin: 0 2px,
+      unselected-pressed-handle-horizontal-margin: 0 2px,
+      state-layer-size: 28px,
+      selected-track-color: var(--c-primary),
+      selected-hover-track-color: var(--c-primary-hover),
+      selected-focus-track-color: var(--c-primary-hover),
+      selected-pressed-track-color: var(--c-primary-hover),
+      selected-handle-color: #ffffff,
+      selected-hover-handle-color: #ffffff,
+      selected-focus-handle-color: #ffffff,
+      selected-pressed-handle-color: #ffffff,
+      unselected-track-color: light-dark(#e4e7ec, #3a4254),
+      unselected-hover-track-color: light-dark(#d0d5dd, #4a5266),
+      unselected-focus-track-color: light-dark(#d0d5dd, #4a5266),
+      unselected-pressed-track-color: light-dark(#d0d5dd, #4a5266),
+      unselected-handle-color: #ffffff,
+      unselected-hover-handle-color: #ffffff,
+      unselected-focus-handle-color: #ffffff,
+      unselected-pressed-handle-color: #ffffff,
+      handle-elevation-shadow: 0 1px 2px rgba(16, 24, 40, 0.2),
+      selected-icon-size: 0,
+      unselected-icon-size: 0,
+      label-text-size: 13px,
+      label-text-color: var(--c-text),
+    )
+  );
+
+  @include mat.checkbox-overrides(
+    (
+      selected-icon-color: var(--c-primary),
+      selected-hover-icon-color: var(--c-primary),
+      selected-focus-icon-color: var(--c-primary),
+      selected-pressed-icon-color: var(--c-primary),
+      unselected-icon-color: var(--c-border-strong),
+      state-layer-size: 32px,
+      label-text-size: 13px,
+    )
+  );
+
+  @include mat.menu-overrides(
+    (
+      container-shape: 8px,
+      container-color: var(--c-surface),
+      container-elevation-shadow: var(--shadow-overlay),
+      item-label-text-size: 13px,
+      item-label-text-color: var(--c-text),
+      item-icon-color: var(--c-text-2),
+      item-icon-size: 18px,
+      item-spacing: 10px,
+      item-leading-spacing: 12px,
+      item-trailing-spacing: 12px,
+      item-with-icon-leading-spacing: 12px,
+      item-with-icon-trailing-spacing: 12px,
+      item-hover-state-layer-color: var(--c-text),
+      divider-color: var(--c-border),
+    )
+  );
+
+  @include mat.select-overrides(
+    (
+      trigger-text-size: 13px,
+      trigger-text-line-height: 20px,
+      panel-background-color: var(--c-surface),
+      container-elevation-shadow: var(--shadow-overlay),
+      enabled-arrow-color: var(--c-text-3),
+      focused-arrow-color: var(--c-primary),
+      placeholder-text-color: var(--c-text-3),
+      enabled-trigger-text-color: var(--c-text),
+    )
+  );
+
+  @include mat.option-overrides(
+    (
+      label-text-size: 13px,
+      label-text-color: var(--c-text),
+      selected-state-label-text-color: var(--c-primary-ink),
+      selected-state-layer-color: var(--c-primary-soft),
+      hover-state-layer-color: var(--c-hover),
+      focus-state-layer-color: var(--c-hover),
+    )
+  );
+
+  @include mat.pseudo-checkbox-overrides(
+    (
+      full-selected-icon-color: var(--c-primary),
+      full-selected-checkmark-color: #ffffff,
+      full-unselected-icon-color: var(--c-border-strong),
+      minimal-selected-checkmark-color: var(--c-primary),
+    )
+  );
+
+  @include mat.dialog-overrides(
+    (
+      container-shape: 12px,
+      container-color: var(--c-surface),
+      container-elevation-shadow: var(--shadow-overlay),
+      subhead-size: 16px,
+      subhead-line-height: 24px,
+      subhead-weight: 600,
+      subhead-color: var(--c-text),
+      supporting-text-size: 13px,
+      supporting-text-line-height: 20px,
+      supporting-text-color: var(--c-text),
+      headline-padding: 20px 24px 8px,
+      content-padding: 12px 24px 8px,
+      with-actions-content-padding: 12px 24px 8px,
+      actions-padding: 12px 24px 16px,
+    )
+  );
+
+  @include mat.datepicker-overrides(
+    (
+      calendar-container-shape: 10px,
+      calendar-container-background-color: var(--c-surface),
+      calendar-container-elevation-shadow: var(--shadow-overlay),
+      calendar-date-selected-state-background-color: var(--c-primary),
+      calendar-date-selected-state-text-color: #ffffff,
+      calendar-date-in-range-state-background-color: var(--c-primary-soft),
+      calendar-date-today-outline-color: var(--c-primary),
+      calendar-date-hover-state-background-color: var(--c-hover),
+      calendar-body-label-text-color: var(--c-text-3),
+      calendar-header-text-size: 11px,
+      calendar-text-size: 12px,
+      range-input-separator-color: var(--c-text-3),
+    )
+  );
+
+  @include mat.tabs-overrides(
+    (
+      active-indicator-color: var(--c-primary),
+      active-focus-indicator-color: var(--c-primary),
+      active-hover-indicator-color: var(--c-primary),
+      active-indicator-height: 2px,
+      active-label-text-color: var(--c-primary-ink),
+      active-focus-label-text-color: var(--c-primary-ink),
+      active-hover-label-text-color: var(--c-primary-ink),
+      inactive-label-text-color: var(--c-text-2),
+      inactive-hover-label-text-color: var(--c-text),
+      label-text-size: 13px,
+      label-text-weight: 600,
+      container-height: 44px,
+      divider-color: var(--c-border),
+      divider-height: 1px,
+    )
+  );
+
+  @include mat.table-overrides(
+    (
+      background-color: transparent,
+      header-headline-color: var(--c-text-2),
+      header-headline-size: 12px,
+      header-headline-weight: 500,
+      header-container-height: 40px,
+      row-item-container-height: 48px,
+      row-item-label-text-color: var(--c-text),
+      row-item-label-text-size: 13px,
+      row-item-outline-color: var(--c-border),
+    )
+  );
+
+  @include mat.paginator-overrides(
+    (
+      container-text-size: 12px,
+      container-text-color: var(--c-text-2),
+      container-background-color: transparent,
+      container-size: 48px,
+      form-field-container-height: 32px,
+      form-field-container-vertical-padding: 6px,
+      select-trigger-text-size: 12px,
+    )
+  );
+
+  @include mat.tooltip-overrides(
+    (
+      container-color: light-dark(#101828, #f5f5f6),
+      container-shape: 6px,
+      supporting-text-color: light-dark(#ffffff, #101828),
+      supporting-text-size: 12px,
+    )
+  );
+
+  @include mat.chips-overrides(
+    (
+      container-shape-radius: 999px,
+      container-height: 26px,
+      label-text-size: 12px,
+      outline-color: var(--c-border),
+    )
+  );
+
+  @include mat.snack-bar-overrides(
+    (
+      container-shape: 8px,
+      supporting-text-size: 13px,
+    )
+  );
+
+  @include mat.button-toggle-overrides(
+    (
+      shape: 8px,
+      height: 34px,
+      label-text-size: 13px,
+      selected-state-background-color: var(--c-primary),
+      selected-state-text-color: #ffffff,
+      divider-color: var(--c-border-strong),
+      text-color: var(--c-text-2),
+    )
+  );
+
+  @include mat.progress-bar-overrides(
+    (
+      active-indicator-color: var(--c-primary),
+      track-color: var(--c-primary-soft),
+      active-indicator-height: 3px,
+      track-height: 3px,
+    )
+  );
+
+  @include mat.progress-spinner-overrides(
+    (
+      active-indicator-color: currentColor,
+    )
+  );
+
+  @include mat.expansion-overrides(
+    (
+      container-shape: 10px,
+      container-background-color: var(--c-surface),
+      header-text-size: 14px,
+      header-text-weight: 600,
+      container-text-size: 13px,
+    )
+  );
+
+  @include mat.list-overrides(
+    (
+      list-item-label-text-size: 13px,
+      list-item-one-line-container-height: 40px,
+    )
+  );
+
+  @include mat.radio-overrides(
+    (
+      selected-icon-color: var(--c-primary),
+      selected-hover-icon-color: var(--c-primary),
+      selected-focus-icon-color: var(--c-primary),
+      selected-pressed-icon-color: var(--c-primary),
+      label-text-size: 13px,
+      state-layer-size: 32px,
+    )
+  );
+
+  @include mat.sort-overrides(
+    (
+      arrow-color: var(--c-text-3),
+    )
+  );
+
+  @include mat.badge-overrides(
+    (
+      background-color: var(--c-danger),
+      text-color: #ffffff,
+    )
+  );
+
+  @include mat.sidenav-overrides(
+    (
+      container-shape: 0,
+      container-background-color: var(--c-surface),
+      content-background-color: var(--c-bg),
+      container-width: 300px,
+    )
+  );
+
+  @include mat.bottom-sheet-overrides(
+    (
+      container-shape: 14px,
+      container-background-color: var(--c-surface),
+    )
+  );
+
+  color-scheme: light;
+  height: 100%;
+}
+html.dark-theme {
+  color-scheme: dark;
+}
+
+/* ---------- Material structural restyling that tokens don't reach ---------- */
+.mat-mdc-form-field {
+  font-size: 13px;
+}
+.mat-mdc-form-field-subscript-wrapper {
+  font-size: 11px;
+}
+// compact fields: icons inside the 36px field
+.mat-mdc-form-field-icon-prefix,
+.mat-mdc-form-field-icon-suffix {
+  > .mat-icon {
+    padding: 6px !important;
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    color: var(--c-text-3);
+  }
+  .mat-mdc-icon-button {
+    --mat-icon-button-state-layer-size: 30px;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    .mat-icon {
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+.mat-mdc-text-field-wrapper.mdc-text-field--outlined {
+  background: var(--c-surface);
+  border-radius: 8px;
+}
+.mdc-text-field--outlined.mdc-text-field--disabled {
+  background: var(--c-surface-2);
+}
+.mdc-text-field--focused:not(.mdc-text-field--invalid) .mdc-notched-outline > * {
+  border-color: var(--c-primary) !important;
+}
+.mat-mdc-form-field.mat-focused .mat-mdc-text-field-wrapper {
+  box-shadow: var(--c-focus-ring);
+}
+textarea.mat-mdc-input-element {
+  line-height: 20px;
+}
+
+// buttons
+.mat-mdc-button-base {
+  letter-spacing: 0 !important;
+}
+.mat-mdc-unelevated-button.mat-primary,
+.mat-mdc-unelevated-button:not(.mat-warn):not(.danger) {
+  box-shadow: var(--shadow-xs);
+  &:hover:not(:disabled) {
+    --mat-button-filled-container-color: var(--c-primary-hover);
+  }
+}
+.mat-mdc-outlined-button:not(:disabled) {
+  background: var(--c-surface);
+  box-shadow: var(--shadow-xs);
+  &:hover {
+    background: var(--c-hover);
+  }
+}
+.mat-mdc-button .mat-icon,
+.mat-mdc-outlined-button .mat-icon,
+.mat-mdc-unelevated-button .mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+.mat-mdc-icon-button.mat-mdc-button-base {
+  --mat-icon-button-state-layer-size: 36px;
+  width: 36px;
+  height: 36px;
+  padding: 8px;
+  display: inline-grid;
+  place-items: center;
+}
+.mat-mdc-icon-button .mat-mdc-button-touch-target {
+  width: 40px;
+  height: 40px;
+}
+.danger.mat-mdc-unelevated-button {
+  --mat-button-filled-container-color: var(--c-danger);
+  --mat-button-filled-label-text-color: #fff;
+}
+
+// switches: compact, no check icons
+.mat-mdc-slide-toggle {
+  .mdc-switch__icons {
+    display: none;
+  }
+  .mdc-label {
+    padding-left: 8px;
+    font-size: 13px;
+  }
+}
+
+// menus & select panels
+.mat-mdc-menu-panel {
+  border: 1px solid var(--c-border);
+  min-width: 180px !important;
+}
+.mat-mdc-menu-content {
+  padding: 4px !important;
+}
+.mat-mdc-menu-item {
+  min-height: 36px !important;
+  border-radius: 6px;
+  .mat-icon {
+    margin-right: 10px !important;
+  }
+}
+div.mat-mdc-select-panel {
+  border: 1px solid var(--c-border);
+  border-radius: 8px !important;
+  padding: 4px !important;
+}
+.mat-mdc-option {
+  min-height: 36px !important;
+  border-radius: 6px;
+  font-size: 13px;
+}
+.mat-mdc-autocomplete-panel {
+  border: 1px solid var(--c-border);
+  border-radius: 8px !important;
+}
+
+// dialogs
+.mat-mdc-dialog-container .mat-mdc-dialog-surface {
+  border: 1px solid var(--c-border);
+}
+.mat-mdc-dialog-title {
+  border-bottom: 1px solid var(--c-border);
+  padding-bottom: 14px !important;
+  margin-bottom: 4px !important;
+  &::before {
+    display: none !important;
+  }
+}
+.mat-mdc-dialog-actions {
+  border-top: 1px solid var(--c-border);
+  gap: 8px;
+  margin-top: 8px;
+}
+.cdk-overlay-dark-backdrop {
+  background: rgba(16, 24, 40, 0.45);
+}
+
+// datepicker
+.mat-datepicker-content {
+  border: 1px solid var(--c-border);
+}
+
+// tabs
+.mat-mdc-tab-header {
+  border-bottom: 1px solid var(--c-border);
+}
+.mat-mdc-tab {
+  min-width: 0 !important;
+  padding: 0 14px !important;
+  letter-spacing: 0 !important;
+}
+
+// table sort
+.mat-sort-header-arrow {
+  color: var(--c-text-3);
+}
+
+// tooltips
+.mat-mdc-tooltip-surface {
+  font-size: 12px !important;
+  padding: 6px 8px !important;
+}
+
+// snackbars
+.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  box-shadow: var(--shadow-overlay) !important;
+}
+
+// chips (mat-chip) used in a few forms
+.mat-mdc-standard-chip {
+  --mat-chip-elevated-container-color: var(--c-neutral-bg);
+  --mat-chip-label-text-color: var(--c-neutral-text);
+}
+
+// checkboxes inside dense forms
+.mat-mdc-checkbox .mdc-label {
+  font-size: 13px;
+  color: var(--c-text);
+}
+
+// button toggles
+.mat-button-toggle-group-appearance-standard {
+  border-color: var(--c-border-strong) !important;
+  background: var(--c-surface);
+}
+.mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+  line-height: 32px !important;
+  padding: 0 12px !important;
+  font-weight: 600;
+}
+
+// expansion panels
+.mat-expansion-panel {
+  border: 1px solid var(--c-border);
+  box-shadow: none !important;
+}
+.mat-expansion-panel:not(.mat-expanded):not(:last-child) {
+  margin-bottom: 8px;
+}

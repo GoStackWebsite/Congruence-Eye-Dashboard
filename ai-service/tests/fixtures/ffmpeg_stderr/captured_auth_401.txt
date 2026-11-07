@@ -1,0 +1,6 @@
+[tcp @ 0x55db61b66540] Starting connection attempt to 127.0.0.1 port 34313
+[tcp @ 0x55db61b66540] Successfully connected to 127.0.0.1 port 34313
+[rtsp @ 0x55db61ba5140] method DESCRIBE failed: 401 Unauthorized
+[in#0 @ 0x55db61ba5040] Error opening input: Server returned 401 Unauthorized (authorization failed)
+Error opening input file rtsp://admin:wrong@127.0.0.1:34313/ok.
+Error opening input files: Server returned 401 Unauthorized (authorization failed)

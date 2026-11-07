@@ -1,0 +1,136 @@
+/* ---------- Base ---------- */
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+body {
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'cv11', 'ss01';
+}
+body.mat-typography {
+  font: 400 13px/20px var(--font);
+  letter-spacing: 0;
+}
+.mat-typography h1,
+.mat-typography h2,
+.mat-typography h3,
+.mat-typography h4 {
+  font-family: var(--font);
+  letter-spacing: 0;
+}
+a {
+  color: var(--c-link);
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  background: var(--c-surface-3);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+:focus-visible {
+  outline: 2px solid var(--c-primary);
+  outline-offset: 2px;
+}
+::selection {
+  background: var(--c-primary-soft);
+}
+.material-symbols-outlined,
+.mat-icon {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+}
+.num,
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* scrollbars: thin and quiet */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--c-border-strong) transparent;
+}
+
+/* ---------- Helpers ---------- */
+.spacer {
+  flex: 1 1 auto;
+}
+.muted {
+  color: var(--c-text-2);
+}
+.faint {
+  color: var(--c-text-3);
+}
+.small {
+  font-size: 12px;
+  line-height: 18px;
+}
+.caption {
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--c-text-3);
+}
+.strong {
+  font-weight: 600;
+}
+.nowrap {
+  white-space: nowrap;
+}
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+.right {
+  text-align: right;
+}
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.good-text {
+  color: var(--c-success-text);
+}
+.bad-text {
+  color: var(--c-danger-text);
+}
+.warn-text {
+  color: var(--c-warning-text);
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+.dash {
+  color: var(--c-text-3);
+}
